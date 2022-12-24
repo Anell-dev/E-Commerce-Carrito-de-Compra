@@ -207,6 +207,7 @@ body {
   justify-content: center;
   height: 80vh;
   align-items: center;
+  max-height: 800px;
 }
 
 .pictures-container {
@@ -557,21 +558,20 @@ div#slider {
   top: 11vh;
 }
 
-.contenido > button {
-  width: 50px;
-  height: 50px;
+.sliderr > button {
+  margin-left: -20px;
   color: white;
   background: none;
   border: none;
-  float: right;
   font-size: 27px;
   position: relative;
-  top: 5px;
+  top: -228px;
+  z-index: 999;
   cursor: pointer;
-  right: 152px;
+  right: -563px;
 }
 
-.contenido > button:hover {
+.sliderr > button:hover {
   color: #ff9047;
 }
 
@@ -605,7 +605,7 @@ div#slider {
 .secundary-images-container-modal {
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  gap: 34px;
 }
 
 .secundary-images-container-modal img {
@@ -625,6 +625,7 @@ div#slider {
   align-items: center;
   overflow: hidden;
   border-radius: 1em;
+  position: relative;
   width: 570px;
   height: 498px;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.5);
@@ -665,11 +666,11 @@ div#slider {
 }
 
 .previous {
-  left: 145px;
+  left: 2px;
 }
 
 .next {
-  right: 145px;
+  right: 2px;
 }
 
 .show {
@@ -785,10 +786,6 @@ div#slider {
     height: 76px;
   }
 
-  #main-image {
-    height: 47vh;
-  }
-
   .info-product-container {
     width: 39%;
     display: flex;
@@ -798,10 +795,6 @@ div#slider {
 }
 
 @media screen and (max-width: 1192px) {
-  #main-image {
-    height: 46vh;
-  }
-
   .info-product-container {
     width: 42%;
   }
@@ -830,7 +823,12 @@ div#slider {
     height: auto;
     margin-top: 30px;
     flex-direction: column;
+    max-height: none;
     align-items: center;
+  }
+
+  .modal.revelar {
+    display: none;
   }
 
   .attribution {
