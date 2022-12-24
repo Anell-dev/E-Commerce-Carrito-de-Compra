@@ -10,7 +10,15 @@ const imgsContainer = document.querySelectorAll(".imgs-container");
 const imgPrincipal = document.querySelector("#main-image");
 const iconoCantidadEnCarrito = document.querySelector(".count");
 
-let idSeleccionado;
+const botonCerrar = document.getElementById("cerrarModal");
+const modal = document.querySelector(".modal");
+const next = document.querySelector(".next");
+const prev = document.querySelector(".previous");
+const numImg = document.querySelectorAll(".img-container img").length;
+const imgcontainer = document.querySelector(".img-container");
+
+let currImg = 1;
+let timeoutID;
 let clicked = false;
 
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -154,3 +162,46 @@ const numberToCurrency = (n) => {
     currency: "USD",
   }).format(n);
 };
+
+imgPrincipal.addEventListener("click", (e) => {
+  abrirModal();
+});
+
+botonCerrar.addEventListener("click", cerrarModal);
+
+next.addEventListener("click", () => {
+  currImg++;
+  clearTimeout(timeoutID);
+  updateImage();
+});
+
+prev.addEventListener("click", () => {
+  currImg--;
+  clearTimeout(timeoutID);
+
+  updateImage();
+});
+
+function abrirModal() {
+  modal.classList.add("revelar");
+}
+
+function cerrarModal() {
+  modal.classList.remove("revelar");
+}
+
+function updateImage() {
+  if (currImg > numImg) {
+    currImg = 1;
+  } else if (currImg < 1) {
+    currImg = numImg;
+  }
+  imgcontainer.style.transform = `translateX(-${(currImg - 1) * 700}px)`;
+
+  timeoutID = setTimeout(() => {
+    currImg++;
+    updateImage();
+  }, 2000);
+}
+
+updateImage();
