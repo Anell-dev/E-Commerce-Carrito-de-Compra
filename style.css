@@ -13,6 +13,7 @@ body {
   border-bottom: 2px solid #d4d5dbf3;
   align-items: center;
   margin: auto;
+  max-width: 1763px;
   width: 70vw;
   justify-content: space-between;
   padding: 30px;
@@ -200,6 +201,8 @@ body {
 
 .picture-and-information-container {
   display: flex;
+  max-width: 1763px;
+  margin: auto;
   gap: 93px;
   justify-content: center;
   height: 80vh;
@@ -210,16 +213,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 66vh;
-  width: 29%;
-  padding: 20px;
+  height: 542px;
+  width: 527px;
 }
 
 #main-image {
   background-image: url(./images/image-product-1.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 48vh;
+  height: 81%;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -249,11 +252,10 @@ body {
 }
 
 .info-product-container {
-  width: 29%;
+  width: 31%;
   display: flex;
   flex-direction: column;
   gap: 29px;
-  height: 380px;
 }
 
 .info-product-container .mini-titlle-container {
@@ -516,8 +518,6 @@ div#slider {
   overflow: hidden;
   width: 124%;
   border-radius: 10px;
-  margin-right: 1px;
-  margin-left: -60px;
 }
 
 .count {
@@ -535,6 +535,141 @@ div#slider {
   position: absolute;
   top: 29px;
   right: 93px;
+}
+
+.backdrop {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(0 0 0 / 70%);
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+
+.contenido {
+  position: fixed;
+  z-index: 1005;
+  width: 50vw;
+  height: 73vh;
+  left: 23vw;
+  margin: 0 auto;
+  top: 11vh;
+}
+
+.contenido > button {
+  width: 50px;
+  height: 50px;
+  color: white;
+  background: none;
+  border: none;
+  float: right;
+  font-size: 27px;
+  position: relative;
+  top: 5px;
+  cursor: pointer;
+  right: 152px;
+}
+
+.contenido > button:hover {
+  color: #ff9047;
+}
+
+.modal:not(.revelar) {
+  display: none;
+}
+
+.modal.revelar {
+  display: block;
+}
+
+.pictures-container-modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 94%;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+}
+
+#main-image-modal {
+  background-image: url(./images/image-product-1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 55vh;
+  width: 59%;
+  border-radius: 10px;
+}
+
+.secundary-images-container-modal {
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.secundary-images-container-modal img {
+  border-radius: 10px;
+  width: 90px;
+  height: 88px;
+}
+
+.imgs-container-modal {
+  border-radius: 12px;
+  height: 89px;
+  width: 91px;
+}
+
+.sliderr {
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1em;
+  width: 570px;
+  height: 498px;
+  box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.5);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.img-container {
+  display: flex;
+  transition: transform 300ms ease-in-out;
+}
+
+.img-container img {
+  width: 669px;
+  height: 558px;
+  user-select: none;
+}
+
+.container-flechitas {
+  background-color: #ffffff;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 13px;
+  height: 27px;
+  width: 27px;
+  align-content: center;
+  position: absolute;
+  z-index: 100;
+}
+
+.flechitas {
+  stroke: #302f2f;
+}
+
+.flechitas:hover {
+  stroke: #ff9047;
+}
+
+.previous {
+  left: 145px;
+}
+
+.next {
+  right: 145px;
 }
 
 .show {
@@ -608,13 +743,6 @@ div#slider {
     height: 88px;
     width: 94px;
   }
-
-  .pictures-container {
-    gap: 20px;
-    height: 66vh;
-    width: 32%;
-    padding: 20px;
-  }
 }
 
 @media screen and (max-width: 1500px) {
@@ -628,46 +756,25 @@ div#slider {
     width: 90px;
   }
 
-  .pictures-container {
-    height: 64vh;
-    width: 34%;
-  }
-
   .info-product-container {
     width: 29%;
     display: flex;
     flex-direction: column;
     gap: 29px;
-    height: 414px;
+    height: max-content;
   }
 }
 
 @media screen and (max-width: 1377px) {
-  .pictures-container {
-    width: 38%;
-  }
-
   .info-product-container {
     width: 29%;
     display: flex;
     flex-direction: column;
     gap: 29px;
-    height: 451px;
-  }
-}
-
-@media screen and (max-width: 1296px) {
-  .pictures-container {
-    height: 64vh;
   }
 }
 
 @media screen and (max-width: 1241px) {
-  .pictures-container {
-    height: 64vh;
-    width: 41%;
-  }
-
   .imgs-container {
     height: 80px;
     width: 90px;
@@ -687,7 +794,6 @@ div#slider {
     display: flex;
     flex-direction: column;
     gap: 29px;
-    height: 451px;
   }
 }
 
@@ -699,16 +805,16 @@ div#slider {
   .info-product-container {
     width: 42%;
   }
+
+  .picture-and-information-container {
+    gap: 58px;
+  }
 }
 
 @media screen and (max-width: 1167px) {
   .secundary-images-container img {
     width: 90px;
     height: 80px;
-  }
-  .pictures-container {
-    height: 64vh;
-    width: 45%;
   }
 
   .imgs-container {
@@ -717,36 +823,29 @@ div#slider {
   }
 }
 
-@media screen and (max-width: 1060px) {
-  .picture-and-information-container {
-    gap: 34px;
-  }
-  .pictures-container {
-    height: 64vh;
-    width: 45%;
-  }
-  .info-product-container {
-    width: 48%;
-  }
-}
-
-@media screen and (max-width: 1020px) {
+@media screen and (max-width: 1065px) {
   .picture-and-information-container {
     display: flex;
     justify-content: center;
     height: auto;
+    margin-top: 30px;
     flex-direction: column;
     align-items: center;
   }
 
+  .attribution {
+    margin-top: 35px;
+  }
+
   .info-product-container {
     width: 76%;
-    height: 383px;
+    height: max-content;
   }
 
   .pictures-container {
     height: 64vh;
     width: 68%;
+    align-items: center;
   }
 
   div#slider {
@@ -763,21 +862,14 @@ div#slider {
 }
 
 @media screen and (max-width: 931px) {
-  #main-image {
-    height: 45vh;
-  }
-
   div#slider {
     display: block;
-
     z-index: -1;
     width: 141%;
-
-    margin-left: -100px;
   }
 
-  #main-image {
-    background-position: initial;
+  .picture-and-information-container {
+    margin-top: 0px;
   }
 
   .pictures-container {
@@ -787,31 +879,16 @@ div#slider {
   .shopping-cart-container {
     right: -2px;
   }
-
-  .info-product-container {
-    height: 408px;
-  }
 }
 
 @media screen and (max-width: 894px) {
-  #main-image {
-    height: 46vh;
-  }
   .pictures-container {
     width: 82%;
   }
 
-  #main-image {
-    background-position: initial;
-    background-size: 76vw 58vh;
-  }
-
   div#slider {
     display: block;
-
     width: 112%;
-
-    margin-left: -37px;
   }
 }
 
@@ -825,16 +902,13 @@ div#slider {
   .menu-desktop-container {
     width: 83vw;
   }
-}
 
-@media screen and (max-width: 850px) {
   .pictures-container {
     width: 87%;
   }
 
-  #main-image {
-    background-position: initial;
-    background-size: 79vw 58vh;
+  div#slider {
+    margin-left: 11px;
   }
 }
 
@@ -844,15 +918,14 @@ div#slider {
     height: 80px;
   }
 
-  .pictures-container {
-    height: 44vh;
-  }
   div#slider {
     display: block;
-
     width: 100%;
+    margin-left: 1px;
+  }
 
-    margin-left: -6px;
+  .pictures-container {
+    height: 44vh;
   }
 
   div#slider figure img {
@@ -865,18 +938,8 @@ div#slider {
     width: 78vw;
   }
 
-  .info-product-container {
-    height: 353px;
-  }
-
   .attribution {
     margin-top: 30px;
-  }
-}
-
-@media screen and (max-width: 594px) {
-  .info-product-container {
-    height: 420px;
   }
 }
 
@@ -889,10 +952,8 @@ div#slider {
 
   div#slider {
     display: block;
-
     border-radius: 0px;
     width: 100%;
-
     margin-left: 0px;
   }
 
@@ -901,7 +962,6 @@ div#slider {
     display: flex;
     flex-direction: column;
     gap: 17px;
-    height: 317px;
   }
 
   .all-section-buttons-container {
@@ -909,11 +969,13 @@ div#slider {
   }
 }
 
-@media screen and (max-width: 498px) {
-  .info-product-container {
-    height: 428px;
+@media screen and (max-width: 490px) {
+  .all-section-buttons-container {
+    gap: 9px;
   }
+}
 
+@media screen and (max-width: 470px) {
   .price-normal-and-price-tashed {
     display: flex;
     flex-direction: row;
@@ -940,22 +1002,16 @@ div#slider {
     flex-direction: column;
     width: 100%;
   }
-  .menu-desktop-container {
-    width: 73vw;
-  }
 
   .menu-desktop-container {
-    position: sticky;
-    top: 0;
+    width: 68vw;
+  }
+
+  .cart-and-avatar-container {
+    gap: 19px;
   }
 
   .pictures-container {
     height: 36vh;
-  }
-}
-
-@media screen and (max-width: 424px) {
-  .attribution {
-    margin-top: 50px;
   }
 }
