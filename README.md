@@ -17,7 +17,7 @@ Los usuarios deben poder:
 
 ### Captura de pantalla
 
-![](./images/captur%20resultado.png);
+![](./images/captur%20resultado.png)
 
 ### Links
 
