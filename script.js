@@ -18,7 +18,6 @@ const numImg = document.querySelectorAll(".img-container img").length;
 const imgcontainer = document.querySelector(".img-container");
 
 let currImg = 1;
-let timeoutID;
 let clicked = false;
 
 document.addEventListener("DOMContentLoaded", (e) => {
@@ -28,6 +27,14 @@ document.addEventListener("DOMContentLoaded", (e) => {
 
   for (let i = 0; i < imgsContainer.length; i++) {
     imgsContainer[i].setAttribute("data-id", i);
+  }
+
+  for (let i = 0; i < imgsModal.length; i++) {
+    imgsModal[i].setAttribute("data-id", i);
+  }
+
+  for (let i = 0; i < imgsContainerModal.length; i++) {
+    imgsContainerModal[i].setAttribute("data-id", i);
   }
 });
 
@@ -169,16 +176,72 @@ imgPrincipal.addEventListener("click", (e) => {
 
 botonCerrar.addEventListener("click", cerrarModal);
 
+const imgsContainerModal = document.querySelectorAll(".imgs-container-modal");
+const imgsModal = document.querySelectorAll(".imgs-modal");
+
+imgsModal.forEach((imgLikeBtn) => {
+  imgLikeBtn.addEventListener("click", (e) => {
+    const btnIdSelected = e.target.getAttribute("data-id");
+
+    imgsModal.forEach((item) => {
+      if (item.dataset.id != btnIdSelected) {
+        item.classList.remove("selected-img-modal");
+      } else {
+        item.classList.add("selected-img-modal");
+      }
+    });
+
+    imgsContainerModal.forEach((item) => {
+      if (item.dataset.id != btnIdSelected) {
+        item.classList.remove("selected-container-modal");
+      } else {
+        item.classList.add("selected-container-modal");
+      }
+    });
+  });
+});
+
 next.addEventListener("click", () => {
+  if (currImg < numImg) {
+    imgsModal[currImg].classList.add("selected-img-modal");
+    imgsContainerModal[currImg].classList.add("selected-container-modal");
+    imgsModal[currImg - 1].classList.remove("selected-img-modal");
+    imgsContainerModal[currImg - 1].classList.remove(
+      "selected-container-modal"
+    );
+  } else {
+    imgsModal[0].classList.add("selected-img-modal");
+    imgsContainerModal[0].classList.add("selected-container-modal");
+    imgsModal[imgsModal.length - 1].classList.remove("selected-img-modal");
+    imgsContainerModal[imgsContainerModal.length - 1].classList.remove(
+      "selected-container-modal"
+    );
+  }
   currImg++;
-  clearTimeout(timeoutID);
+
   updateImage();
 });
 
 prev.addEventListener("click", () => {
-  currImg--;
-  clearTimeout(timeoutID);
+  if (currImg == 1) {
+    imgsModal[imgsModal.length - 1].classList.add("selected-img-modal");
+    imgsContainerModal[imgsContainerModal.length - 1].classList.add(
+      "selected-container-modal"
+    );
+    imgsModal[currImg - 1].classList.remove("selected-img-modal");
+    imgsContainerModal[currImg - 1].classList.remove(
+      "selected-container-modal"
+    );
+  } else {
+    imgsModal[currImg - 2].classList.add("selected-img-modal");
+    imgsContainerModal[currImg - 2].classList.add("selected-container-modal");
+    imgsModal[currImg - 1].classList.remove("selected-img-modal");
+    imgsContainerModal[currImg - 1].classList.remove(
+      "selected-container-modal"
+    );
+  }
 
+  currImg--;
   updateImage();
 });
 
@@ -196,12 +259,7 @@ function updateImage() {
   } else if (currImg < 1) {
     currImg = numImg;
   }
-  imgcontainer.style.transform = `translateX(-${(currImg - 1) * 700}px)`;
-
-  timeoutID = setTimeout(() => {
-    currImg++;
-    updateImage();
-  }, 2000);
+  imgcontainer.style.transform = `translateX(-${(currImg - 1) * 570}px)`;
 }
 
 updateImage();
