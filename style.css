@@ -246,6 +246,14 @@ body {
   border: 2px solid rgb(226 119 40);
 }
 
+.selected-img-modal {
+  filter: contrast(0.5);
+}
+
+.selected-container-modal {
+  border: 2px solid rgb(226 119 40);
+}
+
 .imgs-container {
   border-radius: 12px;
   height: 98px;
@@ -543,35 +551,29 @@ div#slider {
   height: 100vh;
   background-color: rgb(0 0 0 / 70%);
   position: fixed;
-  z-index: 1000;
   top: 0;
   left: 0;
 }
 
 .contenido {
-  position: fixed;
-  z-index: 1005;
-  width: 50vw;
-  height: 73vh;
-  left: 23vw;
-  margin: 0 auto;
-  top: 11vh;
+  position: relative;
+  max-width: 686px;
+  margin: auto;
+  top: -709px;
 }
 
-.sliderr > button {
-  margin-left: -20px;
+.contenido > button {
   color: white;
   background: none;
   border: none;
   font-size: 27px;
-  position: relative;
-  top: -228px;
-  z-index: 999;
+  position: absolute;
+  top: -52px;
   cursor: pointer;
-  right: -563px;
+  right: 70px;
 }
 
-.sliderr > button:hover {
+.contenido > button:hover {
   color: #ff9047;
 }
 
@@ -581,15 +583,14 @@ div#slider {
 
 .modal.revelar {
   display: block;
+  height: 0px;
 }
 
 .pictures-container-modal {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 94%;
   justify-content: center;
-  width: 100%;
   align-items: center;
 }
 
@@ -610,13 +611,12 @@ div#slider {
 
 .secundary-images-container-modal img {
   border-radius: 10px;
-  width: 90px;
-  height: 88px;
+  width: 87px;
 }
 
 .imgs-container-modal {
   border-radius: 12px;
-  height: 89px;
+  height: 91px;
   width: 91px;
 }
 
@@ -625,7 +625,7 @@ div#slider {
   align-items: center;
   overflow: hidden;
   border-radius: 1em;
-  position: relative;
+  position: inherit;
   width: 570px;
   height: 498px;
   box-shadow: 0px 2px 15px 0px rgba(0, 0, 0, 0.5);
@@ -638,8 +638,8 @@ div#slider {
 }
 
 .img-container img {
-  width: 669px;
-  height: 558px;
+  width: 570px;
+  height: 498px;
   user-select: none;
 }
 
@@ -654,7 +654,7 @@ div#slider {
   width: 27px;
   align-content: center;
   position: absolute;
-  z-index: 100;
+  z-index: 1;
 }
 
 .flechitas {
@@ -666,11 +666,11 @@ div#slider {
 }
 
 .previous {
-  left: 2px;
+  left: 49px;
 }
 
 .next {
-  right: 2px;
+  right: 49px;
 }
 
 .show {
