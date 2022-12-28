@@ -174,32 +174,12 @@ imgPrincipal.addEventListener("click", (e) => {
   abrirModal();
 });
 
-botonCerrar.addEventListener("click", cerrarModal);
+botonCerrar.addEventListener("click", (e) => {
+  cerrarModal();
+});
 
 const imgsContainerModal = document.querySelectorAll(".imgs-container-modal");
 const imgsModal = document.querySelectorAll(".imgs-modal");
-
-imgsModal.forEach((imgLikeBtn) => {
-  imgLikeBtn.addEventListener("click", (e) => {
-    const btnIdSelected = e.target.getAttribute("data-id");
-
-    imgsModal.forEach((item) => {
-      if (item.dataset.id != btnIdSelected) {
-        item.classList.remove("selected-img-modal");
-      } else {
-        item.classList.add("selected-img-modal");
-      }
-    });
-
-    imgsContainerModal.forEach((item) => {
-      if (item.dataset.id != btnIdSelected) {
-        item.classList.remove("selected-container-modal");
-      } else {
-        item.classList.add("selected-container-modal");
-      }
-    });
-  });
-});
 
 next.addEventListener("click", () => {
   if (currImg < numImg) {
