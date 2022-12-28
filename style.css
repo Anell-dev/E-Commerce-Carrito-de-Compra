@@ -225,6 +225,7 @@ body {
   height: 81%;
   width: 100%;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .secundary-images-container {
@@ -236,6 +237,7 @@ body {
   border-radius: 10px;
   width: 103px;
   height: 94px;
+  cursor: pointer;
 }
 
 .selected-img {
@@ -559,7 +561,7 @@ div#slider {
   position: relative;
   max-width: 686px;
   margin: auto;
-  top: -709px;
+  bottom: 620px;
 }
 
 .contenido > button {
